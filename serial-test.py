@@ -6,4 +6,4 @@ Created on Mon Apr  9 19:00:33 2018
 """
 
 import serial
-ser=serial.serial ('COM11',115200)
+#ser=serial.serial ('COM11',115200)

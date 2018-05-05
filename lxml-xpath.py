@@ -31,5 +31,5 @@ print(result_file)
 
 #XPath是一门在XML文档中查找信息的语言
 html_path = etree.HTML(text)   
-result_path = html.xpath('//li/a/text()')   
+result_path = html_path.xpath('//li/a/text()')   
 print(result_path)

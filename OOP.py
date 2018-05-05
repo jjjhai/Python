@@ -220,7 +220,7 @@ class Fooes(object):
     __metaclass__ = MyType
     
     def __init__(self):
-         self.name = None
+        self.name = None
          
     def __new__(cls, *args, **kwargs):
         return object.__new__(cls, *args, **kwargs)

@@ -154,6 +154,31 @@ data = parse.urlencode({
 						'Mobile': 0,
 						'DcComment': 0,
 						'LocationName': ''})
+
+packageData = parse.urlencode({
+                        'OrderSn': 0,
+						'SupplierId': 1,
+						'LocationId': 1,
+						'OrderStatus': 0,
+						'ConfirmStatus': 0,
+						'PayStatus': 0,
+						'TotalPrice': 0,
+						'MenuPrice': 0,
+						'PackagePrice': 0,
+						'DeliveryPrice': 0,
+						'PayAmount': 0,
+						'PayTime': 0,
+						'AccountMoney': 0,
+						'OrderMenu': '[{"Id":1,"Name":"鸡腿堡","CateId":1,"Price":0.01,"Image":"http://192.168.3.22/Images/Menus/1/1.jpg","Tags":"","IsEffect":1,"LocationId":1,"SupplierId":1,"BuyCount":1,"XPoint":"114.038167","YPoint":"22.673962","DcMenuCateType":1,"OpenTimeCfgStr":"","Enabled":0,"User":"","Time":"2017-01-01 10:10:00","OrgId":0}]',
+						'UserId': 4,
+						'XPoint': 0,
+						'YPoint': 0,
+						'Address': '',
+						'ApiAddress': '',
+						'Consignee': '',
+						'Mobile': 0,
+						'DcComment': 0,
+						'LocationName': ''})
 while i <= thread_count:  
     t = RequestThread("thread" + str(i), data)  
     t.start()  
