@@ -253,4 +253,7 @@ print(f'Programmer Error: {error:#x}') #'Programmer Error: 0xbadc0ffee'
 #以二进制格式化
 print(f'Programmer Error: {error:#b}') #'Programmer Error: 0b101110101101110000001111111111101110'
 
+    
+def my_add(a: int, b: int) -> int:
+    return a + b
 
