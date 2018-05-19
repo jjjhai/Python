@@ -231,3 +231,26 @@ with lock:
 #将该数字小数部分乘以2，取出整数部分作为二进制表示的第1位
 #然后再将小数部分乘以2，将得到的整数部分作为二进制表示的第2位
 #以此类推，直到小数部分为0
+
+
+#提高可读性    
+number = 100_00_00
+print(number)
+
+
+a = 5
+b = 10
+print(f'Five plus ten is {a + b} and not {2 * (a + b)}.') #'Five plus ten is 15 and not 30.'
+
+# 精度
+PI = 3.141592653
+print(f"Pi is {PI:.2f}") #'Pi is 3.14'
+
+error = 50159747054
+#以16进制格式化
+print(f'Programmer Error: {error:#x}') #'Programmer Error: 0xbadc0ffee'
+
+#以二进制格式化
+print(f'Programmer Error: {error:#b}') #'Programmer Error: 0b101110101101110000001111111111101110'
+
+

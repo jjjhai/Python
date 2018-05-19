@@ -8,13 +8,16 @@ Created on Wed Mar 21 15:23:36 2018
 from urllib import request,parse  
 from urllib.error import URLError  
 import threading
+import random
 
 import time
 from http import client
 
-HOST = "120.76.203.123"
+#HOST = "120.76.203.123"
+HOST = "193.112.215.178"
 PORT = 85
-URL = "/TjsAppDcOrder/CreateDcOrder"
+#URL = "/TjsAppDcOrder/CreateDcOrder"
+URL = "/TjsAppDcOrderInfo/CreateDcOrderInfo"
 TOTAL = 0
 SUCC = 0
 FAIL = 0
@@ -82,7 +85,7 @@ class RequestThread(threading.Thread):
             try:  
                 st = time.time()
                 conn = client.HTTPConnection(HOST, PORT)    
-                conn.request('POST', URL, self.data)  
+                conn.request('POST', URL, self.data, headers={'content-type': 'application/x-www-form-urlencoded'})  
                 res = conn.getresponse()
                 #print(bytes.decode(res.read()))
                 #print('version:', res.version)    
@@ -129,7 +132,7 @@ thread_count = 300
   
 i = 1 
                         
-                        
+"""                        
 data = parse.urlencode({
                         'OrderSn': 0,
 						'SupplierId': 1,
@@ -154,15 +157,19 @@ data = parse.urlencode({
 						'Mobile': 0,
 						'DcComment': 0,
 						'LocationName': ''})
+"""
 
-packageData = parse.urlencode({
-                        'OrderSn': 0,
-						'SupplierId': 1,
-						'LocationId': 1,
+mainData = {
+                    'Id': 0,
+                    'DealCateId': 3,
+                    "SupplierId": 1,
+                    "LocationId": 5,
+                    'SourceAddress': 0,
+                    'DestAddress': 0,
+                   
+                        
 						'OrderStatus': 0,
-						'ConfirmStatus': 0,
-						'PayStatus': 0,
-						'TotalPrice': 0,
+                     'TotalPrice': 0,
 						'MenuPrice': 0,
 						'PackagePrice': 0,
 						'DeliveryPrice': 0,
@@ -171,15 +178,83 @@ packageData = parse.urlencode({
 						'AccountMoney': 0,
 						'OrderMenu': '[{"Id":1,"Name":"鸡腿堡","CateId":1,"Price":0.01,"Image":"http://192.168.3.22/Images/Menus/1/1.jpg","Tags":"","IsEffect":1,"LocationId":1,"SupplierId":1,"BuyCount":1,"XPoint":"114.038167","YPoint":"22.673962","DcMenuCateType":1,"OpenTimeCfgStr":"","Enabled":0,"User":"","Time":"2017-01-01 10:10:00","OrgId":0}]',
 						'UserId': 4,
-						'XPoint': 0,
-						'YPoint': 0,
-						'Address': '',
-						'ApiAddress': '',
-						'Consignee': '',
-						'Mobile': 0,
-						'DcComment': 0,
-						'LocationName': ''})
-while i <= thread_count:  
+                     'Address': '广东省深圳市龙华区白玉街靠近淘金地大厦B座',
+						'Consignee': 'hai',
+                     'Mobile': '15088132388',
+                     'DcComment': '',
+                     'LocationName': '肯德基（省府店）',
+                     'Token': 'wJ1t2D/KgRDZZDj2yx9rjoNLisRwZPza',}
+    
+
+
+    
+      
+      
+packageData = {
+                    'Id': 0,
+                    'DealCateId': 1,
+                    
+                    'SourceAddress': 0,
+                    'DestAddress': 0,
+                   
+                        
+						'OrderStatus': 0,
+                     'TotalPrice': 0,
+						'MenuPrice': 0,
+						'PackagePrice': 0,
+						'DeliveryPrice': 0,
+						'PayAmount': 0,
+						'PayTime': 0,
+						'AccountMoney': 0,
+						'OrderMenu': '{"goods":"零食","weight":3,"parkid":1}',
+						'UserId': 4,
+						'Consignee': 'hai',
+                     'Mobile': '15088132388',
+                     'DcComment': '',
+                     'Token': 'wJ1t2D/KgRDZZDj2yx9rjoNLisRwZPza',}
+    
+postPackageData = {
+                    'Id': 0,
+                    'DealCateId': 58,
+                    
+                    'SourceAddress': 0,
+                    'DestAddress': 0,
+                   
+                        
+						'OrderStatus': 0,
+                     'TotalPrice': 0,
+						'MenuPrice': 0,
+						'PackagePrice': 0,
+						'DeliveryPrice': 0,
+						'PayAmount': 0,
+						'PayTime': 0,
+						'AccountMoney': 0,
+						'OrderMenu': '{"goods":"零食","weight":3,"parkid":1}',
+						'UserId': 4,
+						'Consignee': 'hai',
+                     'Mobile': '15088132388',
+                     'DcComment': '',
+                     'Token': 'wJ1t2D/KgRDZZDj2yx9rjoNLisRwZPza',
+                     }
+
+      
+while i <= thread_count:
+    ran = random.choice((0,1,2))
+    if ran == 0 :
+        postPackageData["SourceAddress"] = random.randint(1, 300) 
+        postPackageData["DestAddress"] = random.randint(1, 300)
+        data = parse.urlencode(postPackageData)
+    
+    elif ran == 1 :
+        packageData["SourceAddress"] = random.randint(1, 300) 
+        packageData["DestAddress"] = random.randint(1, 300)
+        data = parse.urlencode(packageData)
+
+    else:
+        mainData["SourceAddress"] = random.randint(1, 300) 
+        mainData["DestAddress"] = random.randint(1, 300)
+        data = parse.urlencode(mainData)
+    
     t = RequestThread("thread" + str(i), data)  
     t.start()  
     i += 1  
