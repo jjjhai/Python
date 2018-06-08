@@ -201,10 +201,34 @@ def func(self):
 #第二个参数为基类
 Foos = type('Foos',(object,), {'func': func})
 
+#三个参数暗合人类的三大永恒命题：我是谁，我从哪里来，我要到哪里去。
+
+#第一个参数：我是谁。 在这里，我需要一个区分于其它一切的命名
+#第二个参数：我从哪里来。在这里，我需要知道从哪里来，也就是我的“父类”
+#第三个参数：我要到哪里去。在这里，我们将需要调用的方法和属性包含到一个字典里，再作为参数传入
+
+
+
+#道生一，一生二，二生三，三生万物
+
+#道 即是 type
+#一 即是 metaclass(元类，或者叫类生成器)
+#二 即是 class(类，或者叫实例生成器)
+#三 即是 instance(实例)
+#万物 即是 实例的各种属性与方法
+
+
+#元类的操作都在__new__中完成，它的第一个参数是将创建的类
+#之后的参数即是三大永恒命题：我是谁，我从哪里来，我将到哪里去
+#它返回的对象也是三大永恒命题
 
 #__new__ 和 __metaclass__
 #__metaclass__用来表示该类由谁来实例化创建
 class MyType(type):
+    
+    def __new__(cls, name, bases, attrs):
+        #attrs['say'] = ...
+        return type.__new__(cls, name, bases, attrs)
     
     #创建Fooes的时候调用
     def __init__(self, what, bases=None, dict=None):
@@ -215,6 +239,8 @@ class MyType(type):
         obj = self.__new__(self, *args, **kwargs)
         self.__init__(obj)
 
+#class Fooes(object, metaclass=)
+        
 class Fooes(object):
     
     __metaclass__ = MyType
