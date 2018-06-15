@@ -199,6 +199,7 @@ else:
 
 #调用一个函数直到遇到标记值
 #blocks = []
+#iter函数把列表对象转化为迭代器对象
 #iter接受两个参数。第一个是你反复调用的函数，第二个是标记值
 #for block in iter(partial(f.read, 32), ''):
     #blocks.append(block)   
