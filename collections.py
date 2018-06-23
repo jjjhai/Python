@@ -49,4 +49,7 @@ print("spark's name is %s" % spark.name)
 print("%s is %d years old %s" % spark)
 
 
+print(collections.Counter([1,2,3,2,2,1,3]))   #Counter({2: 3, 1: 2, 3: 2})
+
+
 

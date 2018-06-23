@@ -258,3 +258,7 @@ print(f'Programmer Error: {error:#b}') #'Programmer Error: 0b1011101011011100000
 def my_add(a: int, b: int) -> int:
     return a + b
 
+#统计数组
+z = ["1","2","1","3"]
+print(Counter(z))
+
