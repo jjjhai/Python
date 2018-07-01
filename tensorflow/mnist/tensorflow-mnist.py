@@ -23,6 +23,7 @@ y = tf.nn.softmax(tf.matmul(x,W) + b)
 
 
 # 计算成本函数：交叉熵
+# 计算损失
 y_ = tf.placeholder("float", [None,10])
 #累加( 实际值*log(预测值) )
 cross_entropy = -tf.reduce_sum(y_*tf.log(y))
