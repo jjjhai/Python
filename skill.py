@@ -45,6 +45,7 @@ def singleton(cls):
 
     return _singleton
 
+
 #eval:解释字符串为对应的代码并执行
 #exec会忽略返回值
 def test_first():
@@ -258,7 +259,21 @@ print(f'Programmer Error: {error:#b}') #'Programmer Error: 0b1011101011011100000
 def my_add(a: int, b: int) -> int:
     return a + b
 
-#统计数组
-z = ["1","2","1","3"]
-print(Counter(z))
+
+
+#判断变量num是否为整数类型
+num = 1
+type(num) == type(0) #调用三次函数
+type(num) is type(0) #身份比较
+isinstance(num,(int)) #调用一次函数
+
+
+
+# 生成器
+# (exp for iter_var in iterable)
+# 列表解析
+# [exp for iter_var in iterable]
+
+
+
 

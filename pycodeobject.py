@@ -16,6 +16,10 @@ import sys
 
 #编译得到PyCodeObject对象
 
+"""
+使用eval()、exec()函数执行代码时，最好调用代码对象（提前通过compile()函数编译成字节码），而不是直接调用str
+正则表达式模式匹配也类似，也最好先将正则表达式模式编译成regex对象（通过re.complie()函数），然后再执行比较和匹配
+"""
 src = open('pycodeobject-test.py', encoding='utf-8').read()
 #将一个字符串编译为字节代码，exec对应Python语句，eval对应Python表达式
 co = compile(src, 'pycodeobject.py', 'exec')
