@@ -41,7 +41,7 @@ def max_pool_2x2(x):
 
 x = tf.placeholder("float", [None, 784])
 
-# 计算成本函数：交叉熵
+
 y_ = tf.placeholder("float", [None,10])
 
 
@@ -89,6 +89,19 @@ y_conv=tf.nn.softmax(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)
 
 
 
+
+# tensorflow中交叉熵函数
+#tf.nn.weighted_cross_entropy_with_logits
+#tf.nn.sigmoid_cross_entropy_with_logits
+#tf.nn.softmax_cross_entropy_with_logits
+#tf.nn.sparse_softmax_cross_entropy_with_logits
+#
+#tf.losses.sigmoid_cross_entropy
+#tf.losses.softmax_cross_entropy
+#tf.losses.sparse_softmax_cross_entropy
+
+
+# 计算成本函数：交叉熵
 cross_entropy = -tf.reduce_sum(y_*tf.log(y_conv))
 # ADAM优化器做梯度最速下降
 train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)

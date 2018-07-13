@@ -34,6 +34,7 @@ parser.add_argument("-v", "--verbosity", action="count", default=0, help="increa
 #group.add_argument("-q", "--quiet", action="store_true")
 
 
+# args, unparsed = parser.parse_known_args()：接受到多余的命令行参数时不报错，保存在unparsed
 args = parser.parse_args()
 #python argparse.py abc 4
 print(args.pr, args.square**2)
