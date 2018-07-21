@@ -45,6 +45,17 @@ def singleton(cls):
 
     return _singleton
 
+"""
+实现单例模式方法：
+1.使用模块：模块在第一次导入时，会生成.pyc文件
+           第二次导入时，会直接加载.pyc文件，而不会再次执行模块代码
+           import 对象 from xxx
+2.使用__new__：__new__中的类变量cls._instance判断（_instance是类中的字典变量，用于保存所有的实例对象）
+3.使用装饰器（decorator）
+4.使用元类（metaclass）
+"""
+
+
 
 #eval:解释字符串为对应的代码并执行
 #exec会忽略返回值
