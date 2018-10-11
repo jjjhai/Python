@@ -21,7 +21,7 @@ tf.reset_default_graph()
 # 
 #sess.close()
 
-
+# name要一致 
 weights = tf.Variable(tf.zeros([784, 200]), name="weights")
 w2 = tf.Variable(tf.zeros([784, 200]), name="w2")
 w_twice = tf.Variable(tf.zeros([784, 200]), name="w_twice")
