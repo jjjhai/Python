@@ -61,5 +61,7 @@ def redirect_stdout(fileobj):
     finally:
         sys.stdout = oldstdout
 
-
+# 忽略异常
+with contextlib.ignored(OSError):
+    pass
 

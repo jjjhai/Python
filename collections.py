@@ -14,7 +14,7 @@ dict2 = { 'b' : 3, 'c' : 4 }
 #ChainMap把map串联到一起
 chain = collections.ChainMap(dict1, dict2)
  
-# 使用maps输出chainMap
+# 使用maps输出chainMap n
 print(chain.maps)  # [{'b': 2, 'a': 1}, {'b': 3, 'c': 4}]
  
 # 输出key
@@ -53,3 +53,22 @@ print(collections.Counter([1,2,3,2,2,1,3]))   #Counter({2: 3, 1: 2, 3: 2})
 
 
 
+# 检查两个字符串是不是由相同字母不同顺序组成
+print(collections.Counter("abc") == collections.Counter("cba"))
+
+
+
+
+# 移除列表中的重复元素
+items = ['foo', 'bar', 'bar', 'foo']
+print(list(collections.OrderedDict.fromkeys(items).keys()))
+
+
+
+# 查找列表中频率最高的值
+a = [1, 2, 3, 1, 2, 3, 2, 2, 4, 5, 1]
+print(max(set(a), key=a.count))
+
+# 列表中最小和最大值的索引
+lst = [40, 10, 20, 30]
+print(min(range(len(lst)), key=lst.__getitem__))

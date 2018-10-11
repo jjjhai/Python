@@ -254,7 +254,7 @@ def inference(images):
     _activation_summary(local3)
 
 
-  """
+
   # local4
   with tf.variable_scope('local4') as scope:
     weights = _variable_with_weight_decay('weights', shape=[384, 192],
@@ -262,6 +262,7 @@ def inference(images):
     biases = _variable_on_cpu('biases', [192], tf.constant_initializer(0.1))
     local4 = tf.nn.relu(tf.matmul(local3, weights) + biases, name=scope.name)
     _activation_summary(local4)
+    
 
   # linear layer(WX + b),
   # We don't apply softmax here because
@@ -276,8 +277,7 @@ def inference(images):
     _activation_summary(softmax_linear)
 
   return softmax_linear
-  """
-  return 1
+
 
 
 def loss(logits, labels):
@@ -294,14 +294,24 @@ def loss(logits, labels):
   """
   # Calculate the average cross entropy loss across the batch.
   labels = tf.cast(labels, tf.int64)
+  
   cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(
       labels=labels, logits=logits, name='cross_entropy_per_example')
+  
+  print(cross_entropy)
+  # reduce_mean取平均值
   cross_entropy_mean = tf.reduce_mean(cross_entropy, name='cross_entropy')
+  
+  
+  """
   tf.add_to_collection('losses', cross_entropy_mean)
 
   # The total loss is defined as the cross entropy loss plus all of the weight
   # decay terms (L2 loss).
   return tf.add_n(tf.get_collection('losses'), name='total_loss')
+  
+  """
+  return 1
 
 
 def _add_loss_summaries(total_loss):

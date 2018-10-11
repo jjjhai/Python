@@ -36,7 +36,7 @@ print(ts.mktime(ts.localtime()))
 
 ts.sleep(1)
 
-print(time.clock())
+print(ts.clock())
 
 
 

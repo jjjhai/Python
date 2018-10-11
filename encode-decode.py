@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 """
+或者 # encoding: utf-8
+"""
+
+"""
 Created on Wed Mar 14 13:44:56 2018
 
 @author: Administrator

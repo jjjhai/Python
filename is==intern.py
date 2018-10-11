@@ -25,6 +25,15 @@ print(c is d)
 print(1000 is 10**3)
 
 
+# 在Python中-5~256因为被经常使用所以被设计成固定存在的对象
+a = 256
+b = 256
+a is b   # True
+
+a = 257
+b = 257
+a is b   # False
+
 s = [1,2,3]
 #浅拷贝
 sc = copy.copy(s)

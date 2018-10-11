@@ -38,3 +38,5 @@ def main(argv):
 
 if __name__ == "__main__":
     main(sys.argv[1:])      
+    
+# sys.exc_info() 取得异常信息

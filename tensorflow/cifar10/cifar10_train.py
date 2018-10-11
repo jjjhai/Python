@@ -65,19 +65,23 @@ def train():
     # Force input pipeline to CPU:0 to avoid operations sometimes ending up on
     # GPU and resulting in a slow down.
     with tf.device('/cpu:0'):
-      # images:128x24x24x3 float32 images:128 int32
+      # images:128x24x24x3 float32 labels:128 int32
       images, labels = cifar10.distorted_inputs()
       
 
     # Build a Graph that computes the logits predictions from the
     # inference model.
+    # logits:128x10
     logits = cifar10.inference(images)
     
     
-    """
-    # Calculate loss.
-    loss = cifar10.loss(logits, labels)
 
+    # Calculate loss.        
+
+    loss = cifar10.loss(logits, labels)
+    
+
+    """
     # Build a Graph that trains the model with one batch of examples and
     # updates the model parameters.
     train_op = cifar10.train(loss, global_step)

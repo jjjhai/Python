@@ -126,6 +126,10 @@ class Foo(object):
     def __init__(self, sq):
         self.sq = sq
     
+    # 析构函数
+    def __del__(self):
+        pass
+    
     #迭代    
     def __iter__(self):
         return iter(self.sq)
@@ -173,8 +177,16 @@ print(foo)
 """
 运算符重载：
 __add__：+
+__sub__: -
 __mul__：*
+__div__: /
+__mod__: 求余
+__pow__: 乘方
+"""
 
+"""
+__len__:获取长度
+__cmp__:比较运算
 """
 
 """
