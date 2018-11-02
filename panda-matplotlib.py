@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 Created on Sat Mar 24 14:19:44 2018
 
@@ -64,6 +64,14 @@ import numpy as np
 #print(analysis_data)
 
 
+"""
+内连接：默认，结果是键的交集
+外连接：结果是键的并集，使用NaN填充
+左连接: 产生行的笛卡尔积（左边n个a,右边m个a,结果产生m*n行）
+右连接：产生行的笛卡尔积
+
+
+"""
 #数据表合并
 #pd.merge
 

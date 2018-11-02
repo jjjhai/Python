@@ -16,9 +16,24 @@ tf.variable_scope(<scope_name>): 通过tf.get_variable()为变量名指定命名
 """
 
 """
+是否允许共享变量：tf.get_variable_scope().reuse
 false: 全称变量已经存在会报错
 true: 全称变量不存在会报错
+
+三种方法修改：
+1.
+with tf.variable_scope("xxx") as scope:
+    scope.reuse_variables()
+    
+2.
+with tf.variable_scope("xxx", reuse=True) as scope:   
+    
+3.
+with tf.variable_scope("xxx"):
+    tf.get_variable_scope().reuse_variables()
+    
 """
+
 
 """
 print(tf.get_variable_scope().reuse)
