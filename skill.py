@@ -555,8 +555,8 @@ a = 5 + 3 + \
 print(a)
 
 # 等待用户输入
-content = input("请输入点东西并按 Enter 键")
-print(content)
+#content = input("请输入点东西并按 Enter 键")
+#print(content)
 
 
 # 转义符(\)可以用来转义，使用r可以让反斜杠不发生转义
@@ -589,5 +589,15 @@ print(my_very_big_string)
 any(iterable) -> bool   当iterable所有的值都是0、''、False或者iterable为空，返回False，如果所有元素中有一个值非0、''或False，那么结果就为True
 all(iterable) -> bool   当iterable所有元素不为0、''、False或者iterable为空，返回True，否则返回False
 """
+
+
+
+class DefaultDict(dict):
+  # __missing__在访问缺失的key时调用
+  def __missing__(self, key):
+    return 0
+
+
+
 
 

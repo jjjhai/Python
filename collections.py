@@ -6,6 +6,7 @@ Created on Fri Mar 23 10:45:28 2018
 """
 
 import collections
+
  
 # 初始化字典
 dict1 = { 'a' : 1, 'b' : 2 }
@@ -72,3 +73,8 @@ print(max(set(a), key=a.count))
 # 列表中最小和最大值的索引
 lst = [40, 10, 20, 30]
 print(min(range(len(lst)), key=lst.__getitem__))
+
+
+# collections.defaultdict
+# 当访问的key不存在时返回[]
+dd = collections.defaultdict(list)

@@ -70,3 +70,14 @@ finally:
     print('finally, ending')
     
 # sys.exc_info() 取得异常信息
+
+"""
+当在"try...finally"语句的try中执行return,break或continue后,finally子句依然会执行
+函数的返回值由最后执行的return语句决定    
+"""    
+#返回from_finally  
+def some_func():
+    try:
+        return 'from_try'
+    finally:
+        return 'from_finally'

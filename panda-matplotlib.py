@@ -14,7 +14,7 @@ Series 和 DataFrame 分别对应于一维的序列和二维的表结构
 from pandas import Series, DataFrame
 import pandas as pd
 from datetime import timedelta, datetime
-import matplotlib.pyplot as plt
+
 import numpy as np
 
 
@@ -129,6 +129,12 @@ import numpy as np
 #数据表描述性统计
 #analysis_data.describe().round(2).T #round函数设置显示小数位，T表示转置
 
+# 计算中位数（0到1）
+#analysis_data['涨幅'].quantile(0.99)
+
+#计算列的方差
+#analysis_data['涨幅'].var()
+
 #计算列的标准差
 #analysis_data['涨幅'].std()
 
@@ -144,6 +150,20 @@ import numpy as np
 
 #数据表的相关性分析
 #analysis_data.corr()
+
+
+#数据表的一阶差分
+#analysis_data.diff()
+
+# 计算增长率
+# analysis_data['收盘'].pct_change
+
+# 移动窗口函数 xxx：mean corr std min ...
+# analysis_data.rolling_xxx()
+
+# 统计图表
+# analysis_data.pivot_table()
+
 
 analysis_data = pd.read_excel('002297.xlsx')
 print(analysis_data.shape)
@@ -164,7 +184,7 @@ print(analysis_data.shape)
 #value_counts
 
 #显示走势图
-analysis_data['开盘'].plot()
+#analysis_data['开盘'].plot()
 
 #将计算应用于整个数据集
 #analysis_data.apply(lambda函数)
@@ -172,5 +192,98 @@ analysis_data['开盘'].plot()
 #analysis_data.applymap(lambda函数)
 
 
+"""
+Matplotlib能够的轻易生成直方图，波谱图，条形图，散点图等
+"""
 
+import matplotlib.pyplot as plt
+
+
+data = np.arange(100, 201)
+
+# 横坐标为index，纵坐标为value
+#plt.plot(data)
+#plt.show()
+
+ 
+data2 = np.arange(200, 301)
+
+# 创建多个窗口
+#plt.figure()
+#plt.plot(data2)
+
+#plt.show()
+
+
+# 同一个窗口显示多个图形
+# 参数：矩阵的行数和列数，矩阵的索引。
+#plt.subplot(2, 1, 1) # == plt.subplot(211)
+#plt.plot(data)
+
+
+#plt.subplot(2, 1, 2) # == plt.subplot(212)
+#plt.plot(data2)
+
+#plt.show()
+
+
+
+# 线性图
+# 参数：横轴的值，纵轴的值，最后一个参数由两个字符构成的，分别是线条的样式和颜色
+# - 直线   : 点线
+plt.plot([1, 2, 3], [3, 6, 9], '-r')
+plt.plot([1, 2, 3], [2, 4, 9], ':g')
+
+plt.show()
+
+
+# 散点图
+plt.figure()
+
+N = 20
+# 参数：c颜色 s大小 alpha透明度
+plt.scatter(np.random.rand(N) * 100, np.random.rand(N) * 100, c='r', s=100, alpha=0.5)
+plt.scatter(np.random.rand(N) * 100, np.random.rand(N) * 100, c='g', s=200, alpha=0.5)
+plt.scatter(np.random.rand(N) * 100, np.random.rand(N) * 100, c='b', s=300, alpha=0.5)
+
+plt.show()
+
+# 饼状图
+plt.figure()
+
+labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
+pie_data = np.random.rand(7) * 100
+# autopct指定了数值的精度格式
+plt.pie(pie_data, labels=labels, autopct='%1.1f%%')
+
+# 设置了坐标轴大小一致
+plt.axis('equal')
+# 指明要绘制图例（右上角）
+plt.legend()
+
+plt.show()
+
+
+# 条形图
+plt.figure()
+N = 7
+x = np.arange(N)
+bar_data = np.random.randint(low=0, high=100, size=N)
+colors = np.random.rand(N * 3).reshape(N, -1)
+labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+plt.title("Weekday Data")
+plt.bar(x, bar_data, alpha=0.8, color=colors, tick_label=labels)
+plt.show()
+
+# 直方图
+plt.figure()
+hist_data = [np.random.randint(0, n, n) for n in [3000, 4000, 5000]]
+labels = ['3K', '4K', '5K']
+bins = [0, 100, 500, 1000, 2000, 3000, 4000, 5000]
+plt.hist(hist_data, bins=bins, label=labels)
+
+plt.legend()
+
+plt.show()
 
