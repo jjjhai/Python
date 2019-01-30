@@ -287,3 +287,5 @@ plt.legend()
 
 plt.show()
 
+# 调整子图之间的间隔来减少堆叠
+#plt.tight_layout()

@@ -122,15 +122,107 @@ mul_b = np.array([[0, 1],
 #无论矩阵还是数组都是对应位置现乘
 np.multiply(mul_a, mul_b) # [[0,2][6,12]]
 
-
+#当mul_a或mul_b为数组的时候不可以进行T转置
+#当mul_a或mul_b为一维数组的时候不需要进行T转置考虑(矩阵需要考虑)，因为一维数组的shape (2,) 不分行列，数组[1,2,3]在矩阵中表示为[[1],[2],[3]]
 #对数组和矩阵都实现点乘
 np.dot(mul_a,mul_b)
+
 
 #数组对应位置相乘
 mul_a*mul_b # [[0,2][6,12]]
 
 #矩阵对应矩阵运算
 print((np.mat(mul_a))*(np.mat(mul_b))) # [[4, 7],[8, 15]]
+
+#mul_a第一个元素和mul_b所有元素相乘作为第一行，第二个元素和mul_b所有元素相乘作为第二行...
+"""
+[[0, 1, 2, 3]
+ [0, 2, 4, 6]
+ [0, 3, 6, 9]
+ [0, 4, 8, 12]]
+"""
+np.outer(mul_a, mul_b)
+
+#求等差数列
+#endpoint:stop是否是最后一个样本
+#retstep:为True则返回(样本, 样本间隔)
+#numpy.linspace(start，stop，num = 50，endpoint = True，retstep = False，dtype = None)
+
+
+#求等比数列
+#10个等比数列[10^0,...10^9]
+ls = np.logspace(0,9,10)
+
+#10个等比数列[2^0,...2^9]
+ls = np.logspace(0,9,10,base=2)
+
+
+"""
+numpy.linalg模块包含线性代数的函数
+可以计算逆矩阵、求特征值、解线性方程组以及求解行列式等
+"""
+llg = np.mat("0 1 2;1 0 3;4 -3 8")
+
+#逆矩阵
+inv = np.linalg.inv(llg)
+
+#求解线性方程
+#np.linalg.solve
+#求解特征值
+#np.linalg.eigvals
+#求解特征值和特征向量
+#np.linalg.eig
+#奇异值分解
+#np.linalg.svd
+#广义逆矩阵
+#np.linalg.pinv
+#计算行列式
+#np.linalg.det
+
+
+
+"""
+array是一个1维数组时，结果形成一个以一维数组为对角线元素的矩阵
+array是一个二维矩阵时，结果输出矩阵的对角线元素
+"""
+diaga = np.arange(1, 4)
+diagb = np.arange(1, 10).reshape(3, 3) 
+
+"""
+[[1,0,0],
+ [0,2,0],
+ [0,0,3]]
+"""
+np.diag(diaga)
+#[1,5,9]
+np.diag(diagb)
+
+
+#生成一个多元正态分布矩阵
+#参数：mean均值、cov协方差、
+#np.random.multivariate_normal(mean, cov, size=None, check_valid=None, tol=None) 
+
+
+#默认以e为底
+np.log(10)
+
+np.log10(10)
+
+np.log2(4)
+
+# 3为底，4为幂
+np.log(4)/np.log(3)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -253,3 +345,5 @@ hess：黑塞矩阵
 constraints: 约束定义（仅适用于COBYLA和SLSQP）
 options: 求解器选项字典
 """
+
+

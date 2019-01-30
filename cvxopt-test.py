@@ -6,7 +6,8 @@ Created on Thu Nov 22 12:17:20 2018
 """
 
 from cvxopt import matrix, spmatrix, solvers
- 
+
+
 # 创建密集矩阵
 A = matrix([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], (2,3))
 #  B = matrix([ [1.0, 2.0], [3.0, 4.0] ])  
