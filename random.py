@@ -7,8 +7,10 @@ Created on Tue Mar 13 16:05:54 2018
 
 import random
 
+# 返回[0,1)实数
 print(random.random())
 
+# 返回[50,100]范围内实数
 print(random.uniform(50,100))
 
 print(random.randint(1,100))

@@ -39,6 +39,7 @@ print(myObj)
 print("Original {0} - {1}".format(variable,type(variable)))
 
 #encoding
+#encode = json.dumps(variable, indent=2) 格式化json数据
 encode = json.dumps(variable)
 print("Encoded {0} - {1}".format(encode,type(encode)))
 

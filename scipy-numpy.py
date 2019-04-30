@@ -12,6 +12,11 @@ import numpy as np
 # 生成20个小于100的随机整数
 X = np.random.randint(100, size=20)
 
+
+"""
+np.random.rand用法和np.random.randn一样，返回的随机样本位于[0,1)中
+"""
+# 从标准正太分布中返回一个或多个样本值，返回一维包含100个标准正太分布随机数
 X1 = np.random.randn(100)
 
 # 正太分布
@@ -119,7 +124,7 @@ mul_a = np.array([[1, 2],
                   [3, 4]])
 mul_b = np.array([[0, 1], 
                   [2, 3]])
-#无论矩阵还是数组都是对应位置现乘
+#无论矩阵还是数组都是对应位置相乘
 np.multiply(mul_a, mul_b) # [[0,2][6,12]]
 
 #当mul_a或mul_b为数组的时候不可以进行T转置
